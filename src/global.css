@@ -1,0 +1,190 @@
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(114, 114, 114);
+}
+
+/** move everything down this comment to a new css file (this styles are for header only) */
+
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: rgb(229, 229, 229) 1px solid;
+}
+
+#site-information span {
+    font-size: 2em;
+}
+
+#site-information a {
+    font-weight: 500;
+}
+
+#site-information p {
+    margin: 0px;
+}
+
+#site-navigation ul{
+    padding: 0;
+}
+
+#site-navigation ul li{
+    display: inline-block;
+    padding: 0 0.3em;
+    cursor: pointer;
+}
+
+#site-navigation button{
+    color: white;
+    background: #6bddfb;
+    font-weight: 500;
+    padding: 0.4em;
+    border: #6bddfb 2px solid;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+#site-navigation button:hover{
+    color: #6bddfb;
+    border: #6bddfb 2px solid;
+    background-color: transparent;
+}
+
+#site-navigation ul:first-child{
+    font-size: 10px;
+    cursor: pointer;
+    margin: 0;
+}
+
+#site-navigation li.active a{
+    color: #007997;
+    font-weight: 500;
+}
+
+/** Override @media */ 
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 540px) {
+    #site-navigation {
+        display: none;
+    }
+    #site-information {
+        padding-bottom: 0.6em;
+    }
+    #site-information p {
+        text-align: center;
+    }
+    .mobile-menu {
+        display: block;
+    }
+}
+
+/** Header Mobile Menu */
+
+.mobile-menu li:hover path,
+.mobile-menu li.active path,
+.mobile-menu li:hover,
+.mobile-menu li.active
+{
+    fill: #007997;
+    color: #007997;
+    cursor: pointer;
+}
+
+.mobile-menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+} 
+
+.mobile-menu ul{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-around;
+    border-top: rgb(229, 229, 229) 1px solid;
+    box-shadow: 0px -7px 13px -16px;
+}
+
+.mobile-menu li{
+    font-weight: 500;
+}
+
+/** Content styling */
+
+#blog-content{
+    padding: 2em;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 2fr));
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.blog-overview {
+    width: 12em;
+    padding: 1em;
+    border: rgb(229, 229, 229) 1.5px solid;
+    border-radius: 5px;
+}
+
+.blog-overview img {
+    width: 190px;
+}
+
+.blog-overview h2 {
+    font-size: 1.5em;
+    margin: 3px 0px;
+}
+
+.blog-overview p {
+    font-size: 0.8em;
+    margin: 3px 0px;
+}
+
+.blog-overview button {
+    width: 100%;
+    margin: 10px 0;
+    font-weight: 500;
+    padding: 0.4em;
+    color: white;
+    background: #6bddfb;
+    border: #6bddfb 2px solid;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.blog-overview button:hover {
+    color: #6bddfb;
+    border: #6bddfb 2px solid;
+    background-color: transparent;
+}
+
+#no-lang-err{
+    color: white;
+    background-color: red;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px;
+}
+#no-lang-err strong{
+    font-weight: 600;
+}
