@@ -2,7 +2,7 @@ export const postData = [
     {
         id: 1,
         img: "/blog-content/placeholder.jpg",
-        date: [2024, 6, 18],
+        date: [18, 6, 2024],
         author: ["Mok", "link1", "link2",],
         language: {
             English: {       

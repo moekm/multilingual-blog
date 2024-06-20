@@ -188,3 +188,39 @@ header {
 #no-lang-err strong{
     font-weight: 600;
 }
+
+/** Post Show Content */
+
+#post-content{
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    background-color: white;
+    text-align: center;
+    display: none;
+    transition: opacity 0.5s ease-out;
+}
+
+#post-content.show{
+    display: block;
+}
+
+#post-content ol{
+    list-style-type: none;
+    padding: 0;
+}
+
+#post-content span{
+    position: absolute;
+    cursor: pointer;
+    top: 1;
+    right: 2em;
+}
+
+#post-content a {
+    font-weight: 900;
+}
+

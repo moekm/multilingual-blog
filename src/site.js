@@ -7,7 +7,8 @@ const site = {
             langs: ["English","German","French","Spanish","Japanese"]
         },
         body: {
-            readMore: "Read More"
+            readMore: "Read More",
+            postErr: null // no error becuase english is the default language for the site
         }
     },
     German: {
@@ -18,7 +19,8 @@ const site = {
             langs: ["Englisch","Deutsch","Französisch","Spanisch","japanisch"]
         },
         body: {
-            readMore: "Mehr lesen"
+            readMore: "Mehr lesen",
+            postErr: "Dieser Post ist nicht auf \"Deutsch\" verfügbar. Sie können ihn aber trotzdem auf Englisch lesen."
         }
     },
     French: {
@@ -29,7 +31,8 @@ const site = {
             langs: ["Anglais","Allemand","Français","Espagnol","Japonais"]
         },
         body: {
-            readMore: "En savoir plus"
+            readMore: "En savoir plus",
+            postErr: "Cet article n'est pas disponible en \"Français\". Mais vous pouvez toujours le consulter en anglais."
         }
     },
     Spanish: {
@@ -40,7 +43,8 @@ const site = {
             langs: ["Inglés","Alemán","Francés","Español","japonés"]
         },
         body: {
-            readMore: "En savoir plus"
+            readMore: "En savoir plus",
+            postErr: "Esta publicación no está disponible en \"español\". Pero aún puedes verlo en inglés."
         }
     },
     Japanese: {
@@ -51,7 +55,8 @@ const site = {
             langs: ["英語","ドイツ人","フランス語","スペイン語","日本語"]
         },
         body: {
-            readMore: "続きを読む"
+            readMore: "続きを読む",
+            postErr: "この投稿は日本語ではご利用いただけません。ただし、英語では閲覧できます。"
         }
     }
 };

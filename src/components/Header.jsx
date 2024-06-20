@@ -1,4 +1,4 @@
-import site from "../fullSiteTranslations.js";
+import site from "../site.js";
 
 function RenderSiteLanguages({ siteLang }) {
   const [siteLanguage, updateSiteLanguage] = siteLang;
@@ -40,7 +40,7 @@ export default function Header({ siteLang }) {
 
           <ul>
             {navArray.map((item, index) => (
-              <li>
+              <li key={index}>
                 <a>{index == 3 ? <button>{item}</button> : item}</a>
               </li>
             ))}
