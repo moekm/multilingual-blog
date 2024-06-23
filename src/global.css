@@ -224,3 +224,8 @@ header {
     font-weight: 900;
 }
 
+/** About Section */
+
+#about{
+    text-align: center;
+} 

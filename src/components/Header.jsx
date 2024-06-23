@@ -22,7 +22,7 @@ function RenderSiteLanguages({ siteLang }) {
   );
 }
 
-export default function Header({ siteLang }) {
+export default function Header({ siteLang, onUpdatePage, page }) {
   const [siteLanguage] = siteLang;
   const navArray = site[siteLanguage].header.navmenu;
 
@@ -40,8 +40,10 @@ export default function Header({ siteLang }) {
 
           <ul>
             {navArray.map((item, index) => (
-              <li key={index}>
-                <a>{index == 3 ? <button>{item}</button> : item}</a>
+              <li key={index} className={page == index ? "active" : ""}>
+                <a onClick={() => onUpdatePage(index)}>
+                  {index == 3 ? <button>{item}</button> : item}
+                </a>
               </li>
             ))}
           </ul>
