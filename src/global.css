@@ -13,8 +13,6 @@ a:hover {
     color: rgb(114, 114, 114);
 }
 
-/** move everything down this comment to a new css file (this styles are for header only) */
-
 header {
     display: flex;
     flex-wrap: nowrap;
@@ -67,8 +65,8 @@ header {
     cursor: pointer;
     margin: 0;
 }
-
-#site-navigation li.active a{
+/* #site-navigation (removed) */
+li.active a{
     color: #007997;
     font-weight: 500;
 }
@@ -93,7 +91,7 @@ header {
     }
 }
 
-/** Header Mobile Menu */
+/** Mobile Menu */
 
 .mobile-menu li:hover path,
 .mobile-menu li.active path,
@@ -116,6 +114,7 @@ header {
 .mobile-menu ul{
     display: flex;
     list-style-type: none;
+    padding: 0;
     align-items: center;
     justify-content: space-around;
     border-top: rgb(229, 229, 229) 1px solid;
@@ -124,6 +123,19 @@ header {
 
 .mobile-menu li{
     font-weight: 500;
+}
+
+#mobile-change-language ul{
+list-style-type: none;
+text-align: center;
+}
+
+#mobile-change-language li:first-child{
+    font-weight: 500;
+}
+
+#mobile-change-language li{
+    padding: 0.3em 0px;
 }
 
 /** Content styling */
@@ -222,6 +234,11 @@ header {
 
 #post-content a {
     font-weight: 900;
+}
+
+#post-content img {
+    max-width: 100%;
+    width: auto;
 }
 
 /** About Section */

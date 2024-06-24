@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Header from "./components/Header.jsx";
+import Header, { RenderSiteLanguages } from "./components/Header.jsx";
+import MobileMenu from "./components/MobileMenu.jsx";
 import Content from "./components/Content.jsx";
 import Page from "./components/Page.jsx";
 import ManageContents from "./components/ManageContents.jsx";
@@ -28,6 +29,7 @@ function App() {
         onUpdatePage={changeCurrentPage}
         page={page}
       />
+      <MobileMenu onUpdatePage={changeCurrentPage} page={page} />
       <ManageContents page={page}>
         <Content siteLang={siteLanguage} />
         <Page
@@ -41,6 +43,9 @@ function App() {
           links={["github/moekm", "https://github.com/moekm/multilingual-blog"]}
         />
         <Page title="Contact Me" content="Say hi:\n funblog@moekm.com" />
+        <section id="mobile-change-language">
+          <RenderSiteLanguages siteLang={siteLanguage} />
+        </section>
       </ManageContents>
     </>
   );
