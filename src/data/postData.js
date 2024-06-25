@@ -1,7 +1,7 @@
 export const postData = [
     {
         id: 1,
-        img: "/multilingual-blog/blog-content/placeholder.jpg",
+        img: "/multilingual-blog/assets/images/placeholder.jpg",
         date: [18, 6, 2024],
         author: ["Mok", "link1", "link2",],
         language: {

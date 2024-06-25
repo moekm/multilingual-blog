@@ -1,4 +1,4 @@
-import site from "../site.js";
+import site from "../data/site.js";
 
 export const RenderSiteLanguages = ({ siteLang }) => {
   const [siteLanguage, updateSiteLanguage] = siteLang;

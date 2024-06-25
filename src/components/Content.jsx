@@ -1,5 +1,5 @@
-import { postData } from "../postData";
-import site from "../site";
+import { postData } from "../data/postData.js";
+import site from "../data/site.js";
 import { useState } from "react";
 
 function DisplayPostContent({ onPostClick }) {
