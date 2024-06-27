@@ -30,7 +30,7 @@ export default function Header({ siteLang, onUpdatePage, page }) {
     <header>
       <div id="site-information">
         <span>
-          <a href="/">MOEKM Blog</a>
+          <a href="#">MOEKM Blog</a>
         </span>
         <p>{site[siteLanguage].header.tagline}</p>
       </div>

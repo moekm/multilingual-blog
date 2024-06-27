@@ -40,7 +40,9 @@ function App() {
         <Page
           title="Source Code"
           content="You can find the source code for this project at: "
-          links={["github/moekm", "https://github.com/moekm/multilingual-blog"]}
+          links={[
+            ["github/moekm", "https://github.com/moekm/multilingual-blog"],
+          ]}
         />
         <Page title="Contact Me" content="Say hi:\n funblog@moekm.com" />
         <section id="mobile-change-language">

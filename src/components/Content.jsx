@@ -1,16 +1,18 @@
 import { postData } from "../data/postData.js";
 import site from "../data/site.js";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
-function DisplayPostContent({ onPostClick }) {
+function DisplayPostContent({ siteLang, onPostClick }) {
   const [isPostOpen, setPostToExit, postID] = onPostClick;
+  const siteLanguage = siteLang[0];
   if (postID == null) {
     return null;
   }
   const { language, img, author, date } = postData[postID];
-  const { title, content } = language.English;
+  const { title, content } = language[siteLanguage] || language.English;
 
-  return (
+  return createPortal(
     <div id="post-content" className={isPostOpen ? "show" : ""}>
       <span>
         <a onClick={() => setPostToExit(null)}>X</a>
@@ -22,7 +24,8 @@ function DisplayPostContent({ onPostClick }) {
       </ol>
       <h1>{title}</h1>
       <p>{content}</p>
-    </div>
+    </div>,
+    document.getElementById("overlay")
   );
 }
 
@@ -79,7 +82,7 @@ export default function Content({ siteLang }) {
 
   return (
     <section id="blog-content">
-      <DisplayPostContent onPostClick={postStatus} />
+      <DisplayPostContent siteLang={siteLang} onPostClick={postStatus} />
       <DisplayBlogPosts siteLang={siteLang} onPostClick={postStatus} />
     </section>
   );

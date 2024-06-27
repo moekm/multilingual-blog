@@ -76,21 +76,6 @@ li.active a{
     display: none;
 }
 
-@media (max-width: 540px) {
-    #site-navigation {
-        display: none;
-    }
-    #site-information {
-        padding-bottom: 0.6em;
-    }
-    #site-information p {
-        text-align: center;
-    }
-    .mobile-menu {
-        display: block;
-    }
-}
-
 /** Mobile Menu */
 
 .mobile-menu li:hover path,
@@ -241,8 +226,33 @@ text-align: center;
     width: auto;
 }
 
-/** About Section */
+/** page/header Navigation Section */
 
-#about{
+#pageNav{
     text-align: center;
-} 
+}
+
+#pageNav p{
+    margin: auto 25%;
+}
+
+@media (max-width: 540px) {
+    #site-navigation {
+        display: none;
+    }
+    #site-information {
+        padding-bottom: 0.6em;
+    }
+    #site-information p {
+        text-align: center;
+    }
+    .mobile-menu {
+        display: block;
+    }
+    #pageNav{
+        margin-bottom: 5em;
+    }
+    #pageNav p{
+        margin: auto 8%;
+    }
+}
