@@ -12,8 +12,8 @@ A minimalist front-end single-page blog built entirely with **React**, featuring
 - [TODO](#todo) 
 
 
-## Installation:
 <a name="install"></a>
+## Installation:
 
 **1. clone this repo**
 ```bash
@@ -30,8 +30,8 @@ cd ./multilingual-blog
 $> npm install
 ```
 
-### Development Environment
 <a name="install-dev"></a>
+### Development Environment
 
 **To start the development server:**
 ```bash
@@ -43,8 +43,8 @@ $> npm run dev
   ➜  press h + enter to show help
 ```
 
-### Producation Build
 <a name="install-prod"></a>
+### Producation Build
 
 **To build project:**
 ```bash
@@ -61,12 +61,12 @@ export default defineConfig({
 })
 ```
 
-## Features:
 <a name="feat"></a>
+## Features:
 
 ***elements will be added soon*** 
 
-## TODO:
 <a name="todo"></a>
+## TODO:
 
 ***...*** 
