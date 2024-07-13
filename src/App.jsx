@@ -1,55 +1,42 @@
 import { useState } from "react";
-import Header, { RenderSiteLanguages } from "./components/Header.jsx";
-import MobileMenu from "./components/MobileMenu.jsx";
-import Content from "./components/Content.jsx";
+import {
+  Header,
+  RenderSiteLanguages,
+} from "./components/navigations/Header.jsx";
+import MobileMenu from "./components/navigations/MobileMenu.jsx";
+import BlogContent from "./components/BlogContent.jsx";
 import Page from "./components/Page.jsx";
 import ManageContents from "./components/ManageContents.jsx";
+import { siteLanguage } from "./store/siteLanguageContext.jsx";
+import pages from "./data/pages.js";
 
 function App() {
-  const [siteLanguage, setSiteLanguage] = useState([
-    "English",
+  const [page, setPage] = useState(0);
+  const [language, setLanguage] = useState([
+    "ENGLISH",
     function (newLang) {
-      setSiteLanguage((prevState) => {
-        let newState = [...prevState];
-        newState[0] = newLang;
-        return newState;
-      });
+      setLanguage(() => [newLang, language[1]]); // change by reference
     },
   ]);
 
-  const [page, setPage] = useState(0);
   function changeCurrentPage(number) {
     setPage(number);
   }
 
   return (
-    <>
-      <Header
-        siteLang={siteLanguage}
-        onUpdatePage={changeCurrentPage}
-        page={page}
-      />
+    <siteLanguage.Provider value={language}>
+      <Header onUpdatePage={changeCurrentPage} page={page} />
       <MobileMenu onUpdatePage={changeCurrentPage} page={page} />
       <ManageContents page={page}>
-        <Content siteLang={siteLanguage} />
-        <Page
-          title="About Ths Project"
-          contentStyle="left"
-          content="This project is a basic front-end implementation of a multilingual website/blog.\n\nThe idea is to create a platform where you can share your knowledge and ideas with multiple audiences and seamlessly connect different languages.\n\nThis allows users to share and read ideas without the language barrier\n\nIn the future, I plan to implement a backend to enhance the user experience and improve the loading time.Until then, thank you for being here! :D"
-        />
-        <Page
-          title="Source Code"
-          content="You can find the source code for this project at: "
-          links={[
-            ["github/moekm", "https://github.com/moekm/multilingual-blog"],
-          ]}
-        />
-        <Page title="Contact Me" content="Say hi:\n funblog@moekm.com" />
+        <BlogContent />
+        <Page {...pages.ABOUT[language[0]]} align={pages.ABOUT.align} />
+        <Page {...pages.SOURCE[language[0]]} links={pages.SOURCE.links} />
+        <Page {...pages.CONTACT[language[0]]} />
         <section id="mobile-change-language">
-          <RenderSiteLanguages siteLang={siteLanguage} />
+          <RenderSiteLanguages />
         </section>
       </ManageContents>
-    </>
+    </siteLanguage.Provider>
   );
 }
 

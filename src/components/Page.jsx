@@ -1,9 +1,6 @@
-export default function Page({
-  title,
-  content,
-  contentStyle = "",
-  links = [],
-}) {
+import contentParser from "../utils/contentParser.jsx";
+
+export default function Page({ title, content, align = null, links = [] }) {
   let renderedLinks = [];
   if (links.length > 0) {
     links.map((linkArray) => {
@@ -17,26 +14,31 @@ export default function Page({
     });
   }
 
+  // Language not supported? fallback to english with an error
+  if (title == null || content == null) {
+    return (
+      <section id="pageNav" style={{ margin: "2em" }}>
+        <span id="no-lang-err">
+          This page isn't available in your selected language
+        </span>
+      </section>
+    );
+  }
+
   return (
     <section id="pageNav">
       <h1>{title}</h1>
-      <p style={{ textAlign: contentStyle }}>
-        {content.split("\\n").map((string, index) => {
+      <p style={{ textAlign: align }}>
+        {/* {content.split("\n").map((string, index) => {
           return (
             <span key={index}>
               {string}
               <br />
             </span>
           );
-        })}
+        })} */}
+        {contentParser(content)}
       </p>
-      {/* {links.length > 0 ? (
-        <a href={links[1]} style={{ cursor: "pointer", fontWeight: 500 }}>
-          {links[0]}
-        </a>
-      ) : (
-        ""
-      )} */}
       {renderedLinks}
     </section>
   );

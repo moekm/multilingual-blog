@@ -71,6 +71,12 @@ li.active a{
     font-weight: 500;
 }
 
+#site-navigation li.active button{
+    color: #6bddfb;
+    border: #6bddfb 2px solid;
+    background-color: transparent;
+}
+
 /** Override @media */ 
 .mobile-menu {
     display: none;
@@ -210,7 +216,7 @@ text-align: center;
     padding: 0;
 }
 
-#post-content span{
+#post-content #exit{
     position: absolute;
     cursor: pointer;
     top: 1;
@@ -224,6 +230,10 @@ text-align: center;
 #post-content img {
     max-width: 100%;
     width: auto;
+}
+
+#post-content #inner-content{
+margin: 2em;
 }
 
 /** page/header Navigation Section */

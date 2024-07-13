@@ -1,5 +1,5 @@
 const site = {
-    English: {
+    ENGLISH: {
         header: {
             tagline: "Just One Page",
             navmenu: ["Blog", "About", "Source", "Contact"],
@@ -11,7 +11,7 @@ const site = {
             postErr: null // no error becuase english is the default language for the site
         }
     },
-    German: {
+    GERMAN: {
         header: {
             tagline: "Nur eine Seite",
             navmenu: ["Blog", "Über", "Quelle", "Kontakt"],
@@ -23,7 +23,7 @@ const site = {
             postErr: "Dieser Post ist nicht auf \"Deutsch\" verfügbar. Sie können ihn aber trotzdem auf Englisch lesen."
         }
     },
-    French: {
+    FRENCH: {
         header: {
             tagline: "Juste une page",
             navmenu: ["Blog", "Sur", "À propos", "Contact"],
@@ -35,7 +35,7 @@ const site = {
             postErr: "Cet article n'est pas disponible en \"Français\". Mais vous pouvez toujours le consulter en anglais."
         }
     },
-    Spanish: {
+    SPANISH: {
         header: {
             tagline: "Sólo una página",
             navmenu: ["Blog", "Encima", "A proposito", "Contacto"],
@@ -47,7 +47,7 @@ const site = {
             postErr: "Esta publicación no está disponible en \"español\". Pero aún puedes verlo en inglés."
         }
     },
-    Japanese: {
+    JAPANESE: {
         header: {
             tagline: "たった1ページ",
             navmenu: ["ブログ", "について", "ソース", "接触"],
