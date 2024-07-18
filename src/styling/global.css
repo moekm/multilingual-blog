@@ -22,7 +22,7 @@ header {
 }
 
 #site-information span {
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 #site-information a {
@@ -30,6 +30,7 @@ header {
 }
 
 #site-information p {
+    font-size: 1.5em;
     margin: 0px;
 }
 
@@ -38,12 +39,14 @@ header {
 }
 
 #site-navigation ul li{
+    font-size: 1.5em;
     display: inline-block;
     padding: 0 0.3em;
     cursor: pointer;
 }
 
 #site-navigation button{
+    font-size: 0.8em;
     color: white;
     background: #6bddfb;
     font-weight: 500;
@@ -134,7 +137,7 @@ text-align: center;
 #blog-content{
     padding: 2em;
     display: grid;
-    gap: 1em;
+    gap: 5em;
     grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 2fr));
     align-items: center;
     align-content: center;
@@ -142,27 +145,28 @@ text-align: center;
 }
 
 .blog-overview {
-    width: 12em;
-    padding: 1em;
+    width: 250px;
+    padding: 1.5em;
     border: rgb(229, 229, 229) 1.5px solid;
     border-radius: 5px;
 }
 
 .blog-overview img {
-    width: 190px;
+    width: inherit;
 }
 
 .blog-overview h2 {
-    font-size: 1.5em;
+    font-size: 2em;
     margin: 3px 0px;
 }
 
 .blog-overview p {
-    font-size: 0.8em;
+    font-size: 1.2em;
     margin: 3px 0px;
 }
 
 .blog-overview button {
+    font-size: 1.2em;
     width: 100%;
     margin: 10px 0;
     font-weight: 500;
@@ -212,6 +216,7 @@ text-align: center;
 }
 
 #post-content ol{
+    font-size: 1.5em;
     list-style-type: none;
     padding: 0;
 }
@@ -232,19 +237,57 @@ text-align: center;
     width: auto;
 }
 
+#post-content h1{
+    font-size: 3em;
+}
+
 #post-content #inner-content{
-margin: 2em;
+    margin: 2em;
+    font-size: 1.5em;
 }
 
 /** page/header Navigation Section */
 
 #pageNav{
+    font-size: 1.5em;
     text-align: center;
 }
 
 #pageNav p{
     margin: auto 25%;
 }
+
+/** Login Styleing */
+
+#login {
+    width: 15em;
+    margin: auto auto;
+    padding: 2em;
+    text-align: center;
+    background-color: #caf0f8;
+    border-radius: 5px;
+}
+
+#login h3{
+    font-size: 2em;
+    font-weight: 500;
+    margin: 0;
+}
+
+#login p{
+    font-size: 0.8em;
+    margin: 0.5em;
+}
+
+#login input {
+    display: block;
+    width: -webkit-fill-available;
+    font-size: 0.7em;
+    margin: 10px;
+    padding: 5px;
+    outline-style: none;
+}
+
 
 @media (max-width: 540px) {
     #site-navigation {
