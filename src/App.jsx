@@ -9,9 +9,14 @@ import Page from "./components/Page.jsx";
 import ManageContents from "./components/ManageContents.jsx";
 import { siteLanguage } from "./store/siteLanguageContext.jsx";
 import pages from "./data/pages.js";
+import Login from "./components/user/Login.jsx";
 
 function App() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(5);
+  const [user, setUser] = useState({
+    username: null,
+    permission: 0, // read-only
+  });
   const [language, setLanguage] = useState([
     "ENGLISH",
     function (newLang) {
@@ -21,6 +26,10 @@ function App() {
 
   function changeCurrentPage(number) {
     setPage(number);
+  }
+
+  function updateCurrentUser(userLoggedIn) {
+    setUser(userLoggedIn);
   }
 
   return (
@@ -35,6 +44,20 @@ function App() {
         <section id="mobile-change-language">
           <RenderSiteLanguages />
         </section>
+        {user.username == null ? (
+          <Login onUpdateUser={updateCurrentUser} />
+        ) : (
+          <p style={{ textAlign: "center" }}>
+            Logged in as:
+            <strong style={{ fontWeight: "500" }}> {user.username}</strong>
+            <p>
+              With:
+              <strong style={{ fontWeight: "500" }}>
+                {user.permission == 1 ? " Full Access" : " Default Access"}
+              </strong>
+            </p>
+          </p>
+        )}
       </ManageContents>
     </siteLanguage.Provider>
   );
