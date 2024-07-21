@@ -316,6 +316,16 @@ text-align: center;
 background-color: #0096c7;
 }
 
+/** Logged In Text */
+
+#logged-user{
+text-align: center;
+}
+
+#logged-user strong{
+    font-weight: 500;
+}
+
 @media (max-width: 540px) {
     #site-navigation {
         display: none;

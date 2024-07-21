@@ -44,20 +44,7 @@ function App() {
         <section id="mobile-change-language">
           <RenderSiteLanguages />
         </section>
-        {user.username == null ? (
-          <Login onUpdateUser={updateCurrentUser} />
-        ) : (
-          <p style={{ textAlign: "center" }}>
-            Logged in as:
-            <strong style={{ fontWeight: "500" }}> {user.username}</strong>
-            <p>
-              With:
-              <strong style={{ fontWeight: "500" }}>
-                {user.permission == 1 ? " Full Access" : " Default Access"}
-              </strong>
-            </p>
-          </p>
-        )}
+        <Login onUpdateUser={updateCurrentUser} currentUser={user} />
       </ManageContents>
     </siteLanguage.Provider>
   );

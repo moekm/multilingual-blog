@@ -18,8 +18,22 @@ function handelInputChange(state, action) {
   }
 }
 
-export default function Login({ onUpdateUser }) {
+export default function Login({ onUpdateUser, currentUser }) {
   const [inputs, dispatch] = useReducer(handelInputChange, ["admin", "admin"]);
+
+  if (currentUser.username !== null) {
+    return (
+      <div id="logged-user">
+        <p>
+          Logged in as: <strong>{currentUser.username}</strong>
+        </p>
+        <p>
+          Permission:
+          <strong>{currentUser.permission == 1 ? " Full" : " Default"}</strong>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form
