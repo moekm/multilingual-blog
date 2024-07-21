@@ -30,9 +30,9 @@ export function Header({ onUpdatePage, page }) {
   return (
     <header>
       <div id="site-information">
-        <span>
+        <h1>
           <a href="#">MOEKM Blog</a>
-        </span>
+        </h1>
         <p>{site[language].header.tagline}</p>
       </div>
       <div id="site-navigation">

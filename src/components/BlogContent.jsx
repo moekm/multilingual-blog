@@ -88,7 +88,6 @@ function PostContent({ postData }) {
         <li>Author: {author[0]}</li>
       </ol>
       <h1>{title}</h1>
-      {/* <p>{content}</p> */}
       <div id="inner-content">{contentParser(content)}</div>
     </div>,
     document.getElementById("overlay")
