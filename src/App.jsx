@@ -10,6 +10,8 @@ import ManageContents from "./components/ManageContents.jsx";
 import { siteLanguage } from "./store/siteLanguageContext.jsx";
 import pages from "./data/pages.js";
 import Login from "./components/user/Login.jsx";
+import NewPost from "./components/NewPost.jsx";
+import { currentUser } from "./store/userContext.jsx";
 
 function App() {
   const [page, setPage] = useState(5);
@@ -36,16 +38,18 @@ function App() {
     <siteLanguage.Provider value={language}>
       <Header onUpdatePage={changeCurrentPage} page={page} />
       <MobileMenu onUpdatePage={changeCurrentPage} page={page} />
-      <ManageContents page={page}>
-        <BlogContent />
-        <Page {...pages.ABOUT[language[0]]} align={pages.ABOUT.align} />
-        <Page {...pages.SOURCE[language[0]]} links={pages.SOURCE.links} />
-        <Page {...pages.CONTACT[language[0]]} />
-        <section id="mobile-change-language">
-          <RenderSiteLanguages />
-        </section>
-        <Login onUpdateUser={updateCurrentUser} currentUser={user} />
-      </ManageContents>
+      <currentUser.Provider value={user}>
+        <ManageContents page={page}>
+          <BlogContent />
+          <Page {...pages.ABOUT[language[0]]} align={pages.ABOUT.align} />
+          <Page {...pages.SOURCE[language[0]]} links={pages.SOURCE.links} />
+          <NewPost />
+          <section id="mobile-change-language">
+            <RenderSiteLanguages />
+          </section>
+          <Login onUpdateUser={updateCurrentUser} />
+        </ManageContents>
+      </currentUser.Provider>
     </siteLanguage.Provider>
   );
 }

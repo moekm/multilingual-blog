@@ -2,7 +2,7 @@ const site = {
     ENGLISH: {
         header: {
             tagline: "Just One Page",
-            navmenu: ["Blog", "About", "Source", "Contact"],
+            navmenu: ["Blog", "About", "Source", "New Post"],
             language: "Language",
             langs: ["English","German","French","Spanish","Japanese"]
         },
@@ -14,7 +14,7 @@ const site = {
     GERMAN: {
         header: {
             tagline: "Nur eine Seite",
-            navmenu: ["Blog", "Über", "Quelle", "Kontakt"],
+            navmenu: ["Blog", "Über", "Quelle", "Neuer Post"],
             language: "Sprache",
             langs: ["Englisch","Deutsch","Französisch","Spanisch","japanisch"]
         },
@@ -26,7 +26,7 @@ const site = {
     FRENCH: {
         header: {
             tagline: "Juste une page",
-            navmenu: ["Blog", "Sur", "À propos", "Contact"],
+            navmenu: ["Blog", "Sur", "À propos", "Nouveau Post"],
             language: "Langue",
             langs: ["Anglais","Allemand","Français","Espagnol","Japonais"]
         },
@@ -38,7 +38,7 @@ const site = {
     SPANISH: {
         header: {
             tagline: "Sólo una página",
-            navmenu: ["Blog", "Encima", "A proposito", "Contacto"],
+            navmenu: ["Blog", "Encima", "A proposito", "Nueva Post"],
             language: "Idioma",
             langs: ["Inglés","Alemán","Francés","Español","japonés"]
         },
@@ -50,7 +50,7 @@ const site = {
     JAPANESE: {
         header: {
             tagline: "たった1ページ",
-            navmenu: ["ブログ", "について", "ソース", "接触"],
+            navmenu: ["ブログ", "について", "ソース", "新しい投稿"],
             language: "言語",
             langs: ["英語","ドイツ人","フランス語","スペイン語","日本語"]
         },

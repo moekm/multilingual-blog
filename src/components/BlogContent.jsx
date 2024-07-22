@@ -2,8 +2,14 @@ import { useState, useContext } from "react";
 import { createPortal } from "react-dom";
 import { siteLanguage } from "../store/siteLanguageContext.jsx";
 import contentParser from "../utils/contentParser.jsx";
+import PostControls from "./wrapers/PostControls.jsx";
 import site from "../data/site.js";
 import { posts } from "../data/posts.js";
+
+/**
+ * THIS SECTION IS PUT ON HOLD FOR A BIT
+ * WILL REFACTOR ALL THE MESS BELLOW :O
+ */
 
 export default function BlogContent() {
   const [post, setPost] = useState({
@@ -61,6 +67,7 @@ function Posts({ onPostClick }) {
         <button onClick={() => onPostClick(id - 1)}>
           {site[language].body.readMore}
         </button>
+        <PostControls />
       </div>
     );
   });
@@ -77,19 +84,26 @@ function PostContent({ postData }) {
   const { postLanguages, img, author, date } = posts[id];
   const { title, content } = postLanguages[language] || postLanguages.ENGLISH;
 
+  const RenderPostContent = ({ isEditing }) => {
+    return (
+      <div id="post-content" className={isOpen ? "show" : ""}>
+        <span id="exit">
+          <a onClick={() => update(null)}>X</a>
+        </span>
+        <img src={img} alt={title} />
+        <PostControls />
+        <ol>
+          <li>Published: {`${date[0]}/${date[1]}/${date[2]}`}</li>
+          <li>Author: {author[0]}</li>
+        </ol>
+        <h1>{title}</h1>
+        <div id="inner-content">{contentParser(content)}</div>
+      </div>
+    );
+  };
+
   return createPortal(
-    <div id="post-content" className={isOpen ? "show" : ""}>
-      <span id="exit">
-        <a onClick={() => update(null)}>X</a>
-      </span>
-      <img src={img} alt={title} />
-      <ol>
-        <li>Published: {`${date[0]}/${date[1]}/${date[2]}`}</li>
-        <li>Author: {author[0]}</li>
-      </ol>
-      <h1>{title}</h1>
-      <div id="inner-content">{contentParser(content)}</div>
-    </div>,
+    <RenderPostContent isEditing={true} />,
     document.getElementById("overlay")
   );
 }

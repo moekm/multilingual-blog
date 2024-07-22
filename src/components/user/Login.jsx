@@ -1,4 +1,5 @@
-import { useReducer } from "react";
+import { useReducer, useContext } from "react";
+import { currentUser } from "../../store/userContext";
 
 function handelInputChange(state, action) {
   let returnedState = [...state];
@@ -18,18 +19,19 @@ function handelInputChange(state, action) {
   }
 }
 
-export default function Login({ onUpdateUser, currentUser }) {
+export default function Login({ onUpdateUser }) {
+  const user = useContext(currentUser);
   const [inputs, dispatch] = useReducer(handelInputChange, ["admin", "admin"]);
 
-  if (currentUser.username !== null) {
+  if (user.username !== null) {
     return (
       <div id="logged-user">
         <p>
-          Logged in as: <strong>{currentUser.username}</strong>
+          Logged in as: <strong>{user.username}</strong>
         </p>
         <p>
           Permission:
-          <strong>{currentUser.permission == 1 ? " Full" : " Default"}</strong>
+          <strong>{user.permission == 1 ? " Full" : " Default"}</strong>
         </p>
       </div>
     );

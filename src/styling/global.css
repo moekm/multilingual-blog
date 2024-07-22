@@ -5,6 +5,7 @@
     --span-size: 1.2em;
     --default-color: #6bddfb;
     --default-color-hover: #007997;
+    --error-color: #fb6b6b;
 }
 
 * {
@@ -32,6 +33,65 @@ header {
     justify-content: space-evenly;
     align-items: center;
     border-bottom: rgb(229, 229, 229) 1px solid;
+}
+
+
+/** Input fileds and Button and Defaults */
+
+input, textarea{
+    font-size: var(--p-size);
+    display: block;
+    width: -webkit-fill-available;
+    max-width: -webkit-fill-available;
+    margin: 10px;
+    padding: 0.6em 0.5em;
+    outline-style: none;
+    border: 1px solid #dee2e6;
+    border-radius: 3px;
+}
+
+input:hover, textarea:hover{
+    border-color: #adb5bd;
+}
+
+input:focus, textarea:focus{
+    border-color: var(--default-color-hover);
+}
+
+button{
+    width: auto;
+    border: none;
+    color: white;
+    margin: 0.3em 0;
+    padding: 0.3em 2em;
+    border-radius: 3px;
+    background-color: var(--default-color);
+    cursor: pointer;
+}
+
+button:hover{
+background-color: var(--default-color-hover);
+}
+
+button[disabled]{
+    cursor: default;
+    color: #dee2e6;
+    background-color: #adb5bd;
+}
+
+button.delete{
+    background-color: var(--error-color) !important;
+    border-color: var(--error-color) !important;
+}
+
+button.delete:hover{
+    color: var(--error-color) !important;
+    background-color: transparent !important;
+}
+
+#default-text{
+    font-size: var(--p-size);
+    text-align: center;
 }
 
 #site-information h1 {
@@ -104,14 +164,14 @@ li.active a{
 
 .mobile-menu {
     display: none;
-}
-
-.mobile-menu {
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
+    padding: 0.5em 0;
     background-color: white;
+    border-top: rgb(229, 229, 229) 1px solid;
+    box-shadow: 0px -7px 13px -16px;
 } 
 
 .mobile-menu li:hover path,
@@ -127,11 +187,10 @@ li.active a{
 .mobile-menu ul{
     display: flex;
     padding: 0;
+    margin: 0;
     list-style-type: none;
     align-items: center;
     justify-content: space-around;
-    border-top: rgb(229, 229, 229) 1px solid;
-    box-shadow: 0px -7px 13px -16px;
 }
 
 .mobile-menu li{
@@ -303,42 +362,18 @@ font-weight: 900;
     margin: 0.5em;
 }
 
-#login input {
-    display: block;
-    width: -webkit-fill-available;
-    margin: 10px;
-    padding: 0.6em 0.5em;
-    outline-style: none;
-    border: 1px solid #dee2e6;
-    border-radius: 3px;
-}
-
-#login input:hover{
-    border-color: #adb5bd;
-}
-
-#login input:focus{
-    border-color: var(--default-color-hover);
-}
-
-#login button{
-    width: auto;
-    border: none;
-    color: white;
-    margin: 1em;
-    padding: 0.3em 2em;
-    border-radius: 3px;
-    background-color: var(--default-color);
-    cursor: pointer;
-}
-
-#login button:hover{
-background-color: var(--default-color-hover);
-}
-
 #logged-user{
 font-size: var(--p-size);
 text-align: center;
+}
+
+#edit-post{
+    display: flex;
+    justify-content: space-around;
+}
+
+#edit-post button{
+    width: auto;
 }
 
 @media (max-width: 540px) {
@@ -359,5 +394,8 @@ text-align: center;
     }
     #pageNav p{
         margin: auto 8%;
+    }
+    #login {
+        width: 80%;
     }
 }
