@@ -32,3 +32,17 @@ export const posts = [
         }
     }
 ];
+
+export const postTemplate = {
+    id: null,
+    img: "/multilingual-blog/assets/images/placeholder.jpg",
+    date: [0, 0, 1111],
+    author: ["USER1", "USER2"],
+    postLanguages: {
+        ENGLISH: {       
+            title: null,
+            description: null,
+            content: null
+        },
+    }
+}

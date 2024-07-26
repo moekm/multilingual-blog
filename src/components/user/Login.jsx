@@ -1,5 +1,4 @@
-import { useReducer, useContext } from "react";
-import { currentUser } from "../../store/userContext";
+import { useReducer } from "react";
 
 function handelInputChange(state, action) {
   let returnedState = [...state];
@@ -19,8 +18,7 @@ function handelInputChange(state, action) {
   }
 }
 
-export default function Login({ onUpdateUser }) {
-  const user = useContext(currentUser);
+export default function Login({ onUpdateUser, user }) {
   const [inputs, dispatch] = useReducer(handelInputChange, ["admin", "admin"]);
 
   if (user.username !== null) {

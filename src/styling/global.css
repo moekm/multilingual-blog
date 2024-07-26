@@ -62,7 +62,7 @@ button{
     width: auto;
     border: none;
     color: white;
-    margin: 0.3em 0;
+    margin: 0.3em 0.3em;
     padding: 0.3em 2em;
     border-radius: 3px;
     background-color: var(--default-color);
@@ -284,7 +284,7 @@ text-align: center;
     overflow: hidden;
     background-color: white;
     text-align: center;
-    display: none;
+    /* display: none; */
     transition: opacity 0.5s ease-out;
 }
 
@@ -321,6 +321,10 @@ font-weight: 900;
 #post-content #inner-content{
     font-size: var(--span-size);
     margin: 2em;
+}
+
+#post-content input{
+    text-align: center;
 }
 
 /** Page navigation content area Blog->content.. */
