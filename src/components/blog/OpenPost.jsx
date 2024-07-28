@@ -1,26 +1,23 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { createPortal } from "react-dom";
 import PostAdminControls from "./PostAdminControls.jsx";
-import { siteLanguage } from "../../store/siteLanguageContext";
 import contentParser from "../../utils/contentParser.jsx";
 
-export default function OpenPost({ post, onDispatch, isAdmin }) {
-  const [language] = useContext(siteLanguage);
-  const { postList, pindex, isEditing } = post;
+export default function OpenPost({ language, postState, onDispatch, isAdmin }) {
+  const post = postState.posts[postState.pindex];
 
-  if (pindex == null || postList[pindex] == null)
-    throw new Error("Post not found and/or invalid index");
+  // if (pindex == null || postList[pindex] == null)
+  //   throw new Error("Post not found and/or invalid index");
 
-  const { postLanguages, img, author, date } = postList[pindex];
+  const { postLanguages, img, author, date } = post;
   const { title, content } = postLanguages[language || "ENGLISH"];
 
   // Handles post data and state
   const titleRef = useRef(null);
   const contentRef = useRef(null);
   let authorElement, titleElement, contentElement;
-  //   let inputData;
 
-  if (isEditing) {
+  if (postState.isEditing) {
     authorElement = (
       <input type="text" defaultValue={author[0]} placeholder="Author.." />
     );
@@ -44,23 +41,24 @@ export default function OpenPost({ post, onDispatch, isAdmin }) {
       <img src={img} alt={title} />
       {isAdmin && (
         <PostAdminControls
-          onDelete={() => onDispatch({ type: "delete", index: post.pindex })}
+          onDelete={() =>
+            onDispatch({ type: "delete", index: postState.pindex })
+          }
           onEdit={
-            isEditing
+            postState.isEditing
               ? null
-              : () => onDispatch({ type: "edit", index: post.pindex })
+              : () => onDispatch({ type: "edit", index: postState.pindex })
           }
           onSave={
-            isEditing
+            postState.isEditing
               ? () => {
-                  const payload = {
-                    title: titleRef.current.value,
-                    content: contentRef.current.value,
-                  };
                   onDispatch({
                     type: "save",
                     language,
-                    payload,
+                    payload: {
+                      title: titleRef.current.value,
+                      content: contentRef.current.value,
+                    },
                   });
                 }
               : null

@@ -1,92 +1,18 @@
 import { useContext, useReducer } from "react";
 import PostAdminControls from "./PostAdminControls.jsx";
 import OpenPost from "./OpenPost.jsx";
-import { siteLanguage } from "../../store/siteLanguageContext.jsx";
+import { siteSettingsContext } from "../../store/siteSettingsContext.jsx";
 import site from "../../data/site.js";
-import { posts as postList, postTemplate } from "../../data/posts.js";
 
-/**
- * TODO:
- * ADD DELETE FUNCTIONALITY
- * ADD MODAL BEFORE DELETE
- */
+export default function BlogPosts({ postState, onDispatch }) {
+  const { language, user } = useContext(siteSettingsContext);
 
-function handelPostActions(state, action) {
-  switch (action.type) {
-    case "click":
-      return {
-        ...state,
-        pindex: action.index,
-        isOpen: !state.isOpen,
-        isEditing: false,
-      };
-      break;
-    case "first-delete":
-      // Modal confirm delete..
-      break;
-    case "delete":
-      return {
-        ...state,
-        postList: state.postList.filter((p, index) => index !== action.index),
-        pindex: null,
-        isOpen: false,
-        isEditing: false,
-      };
-      break;
-
-    case "edit":
-      return {
-        ...state,
-        pindex: action.index,
-        isOpen: true,
-        isEditing: true,
-      };
-      break;
-    case "save":
-      let newPostList = [...state.postList];
-      let post = newPostList[state.pindex].postLanguages;
-      post[action.language].title = action.payload.title;
-      post[action.language].content = action.payload.content;
-
-      return {
-        ...state,
-        postList: newPostList,
-        isOpen: true,
-        isEditing: false,
-      };
-      break;
-    case "edit-outside":
-      return {
-        ...state,
-        pindex: action.index,
-        isOpen: true,
-        isEditing: true,
-      };
-      break;
-  }
-}
-
-export default function BlogPosts({ newPost, isAdmin }) {
-  const [language] = useContext(siteLanguage);
-  const [posts, dispatch] = useReducer(handelPostActions, {
-    postList: postList,
-    pindex: null,
-    isOpen: false,
-    isEditing: false,
-  });
-
-  if (newPost.current !== null) {
-    const listLastID = posts.postList[posts.postList.length - 1].id;
-    const formattedPost = createNewPost(newPost.current, listLastID);
-    posts.postList.push(formattedPost);
-    newPost.current = null;
-  }
-
-  if (posts.postList.length <= 0) {
+  if (postState.posts == null) postState.posts = [];
+  if (postState.posts.length <= 0) {
     return <p id="default-text">0 Posts Found</p>;
   }
 
-  const renderPosts = posts.postList.map((post, index) => {
+  const renderPosts = postState.posts.map((post, index) => {
     let err, title, description;
     const { id, img, postLanguages } = post;
 
@@ -106,13 +32,18 @@ export default function BlogPosts({ newPost, isAdmin }) {
         <h2>{title}</h2>
         <p>{description}</p>
         {err && err}
-        <button onClick={() => dispatch({ type: "click", index: index })}>
+        <button onClick={() => onDispatch({ type: "click", index: index })}>
           {site[language].body.readMore}
         </button>
-        {isAdmin && (
+        {user.isAdmin && (
           <PostAdminControls
-            onDelete={() => dispatch({ type: "delete", index: index })}
-            onEdit={() => dispatch({ type: "edit-outside", index: index })}
+            onDelete={() =>
+              onDispatch({
+                type: "delete",
+                index: index,
+              })
+            }
+            onEdit={() => onDispatch({ type: "edit-outside", index: index })}
           />
         )}
       </div>
@@ -121,21 +52,15 @@ export default function BlogPosts({ newPost, isAdmin }) {
 
   return (
     <section id="blog-content">
-      {posts.isOpen && (
-        <OpenPost post={posts} onDispatch={dispatch} isAdmin={isAdmin} />
+      {postState.isOpen && (
+        <OpenPost
+          language={language}
+          onDispatch={onDispatch}
+          isAdmin={user.isAdmin}
+          postState={postState}
+        />
       )}
       {renderPosts}
     </section>
   );
-}
-
-function createNewPost(postObject, lastpostID) {
-  let template = { ...postTemplate };
-
-  template.id = lastpostID + 1;
-  template.postLanguages.ENGLISH.title = postObject.title;
-  template.postLanguages.ENGLISH.description = postObject.description;
-  template.postLanguages.ENGLISH.content = postObject.content;
-
-  return template;
 }

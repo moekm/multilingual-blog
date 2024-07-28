@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-function handelInputChange(state, action) {
+function handleInputChange(state, action) {
   let returnedState = [...state];
 
   switch (action.type) {
@@ -18,8 +18,8 @@ function handelInputChange(state, action) {
   }
 }
 
-export default function Login({ onUpdateUser, user }) {
-  const [inputs, dispatch] = useReducer(handelInputChange, ["admin", "admin"]);
+export default function Login({ onLogin, user }) {
+  const [inputs, dispatch] = useReducer(handleInputChange, ["admin", "admin"]);
 
   if (user.username !== null) {
     return (
@@ -44,7 +44,7 @@ export default function Login({ onUpdateUser, user }) {
         if (filtered.username.length <= 0) {
           return null;
         }
-        onUpdateUser(filtered);
+        onLogin(filtered);
       }}
     >
       <h3>Login</h3>

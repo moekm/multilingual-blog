@@ -1,6 +1,12 @@
 import { useRef } from "react";
+import { postTemplate } from "../../data/posts.js";
 
-export default function NewPost({ onNewPost, onAfterPosted, user, isAdmin }) {
+export default function NewPost({
+  onDispatch,
+  onAfterPosted,
+  user,
+  lastPostID,
+}) {
   const title = useRef(null);
   const description = useRef(null);
   const content = useRef(null);
@@ -11,7 +17,7 @@ export default function NewPost({ onNewPost, onAfterPosted, user, isAdmin }) {
         Oops! You're not logged in. Please <a href="/">login</a> to continue
       </p>
     );
-  } else if (isAdmin == false) {
+  } else if (user.isAdmin == false) {
     return <p id="default-text">Only admins can create posts at the moment</p>;
   }
 
@@ -21,10 +27,17 @@ export default function NewPost({ onNewPost, onAfterPosted, user, isAdmin }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onNewPost({
-            title: title.current.value,
-            description: description.current.value,
-            content: content.current.value,
+          onDispatch({
+            type: "new",
+            payload: createNewPost(
+              {
+                title: title.current.value,
+                description: description.current.value,
+                content: content.current.value,
+                author: user.username,
+              },
+              lastPostID
+            ),
           });
           onAfterPosted();
         }}
@@ -49,4 +62,25 @@ export default function NewPost({ onNewPost, onAfterPosted, user, isAdmin }) {
       </form>
     </div>
   );
+}
+
+function createNewPost(postObject, lastpostID) {
+  let template = { ...postTemplate };
+
+  // calculate the current date
+  const date = new Date();
+  const formattedDate = [
+    date.getDate(),
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1,
+    date.getFullYear(),
+  ]; // DD/MM/YYYY
+
+  template.id = Math.random();
+  template.date = formattedDate;
+  template.author = [postObject.author];
+  template.postLanguages.ENGLISH.title = postObject.title;
+  template.postLanguages.ENGLISH.description = postObject.description;
+  template.postLanguages.ENGLISH.content = postObject.content;
+
+  return template;
 }

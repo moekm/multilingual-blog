@@ -1,10 +1,12 @@
-export default function MobileMenu({ onUpdatePage, page }) {
+export default function MobileMenu({ page }) {
+  const [pageNumber, setPageNumber] = page;
+
   return (
     <div className="mobile-menu">
       <ul>
         <li
-          onClick={() => onUpdatePage(0)}
-          className={page == 0 ? "active" : ""}
+          onClick={() => setPageNumber(0)}
+          className={pageNumber == 0 ? "active" : ""}
         >
           <svg
             width="35px"
@@ -22,8 +24,8 @@ export default function MobileMenu({ onUpdatePage, page }) {
           </svg>
         </li>
         <li
-          onClick={() => onUpdatePage(1)}
-          className={page == 1 ? "active" : ""}
+          onClick={() => setPageNumber(1)}
+          className={pageNumber == 1 ? "active" : ""}
         >
           <svg
             width="35px"
@@ -41,8 +43,8 @@ export default function MobileMenu({ onUpdatePage, page }) {
           </svg>
         </li>
         <li
-          onClick={() => onUpdatePage(3)}
-          className={page == 3 ? "active" : ""}
+          onClick={() => setPageNumber(3)}
+          className={pageNumber == 3 ? "active" : ""}
         >
           <svg
             width="35px"
@@ -60,8 +62,8 @@ export default function MobileMenu({ onUpdatePage, page }) {
           </svg>
         </li>
         <li
-          onClick={() => onUpdatePage(4)}
-          className={page == 4 ? "active" : ""}
+          onClick={() => setPageNumber(4)}
+          className={pageNumber == 4 ? "active" : ""}
         >
           EN
         </li>

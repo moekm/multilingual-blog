@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { siteLanguage } from "../../store/siteLanguageContext.jsx";
+import { siteSettingsContext } from "../../store/siteSettingsContext.jsx";
 import site from "../../data/site.js";
 
 export function RenderSiteLanguages() {
-  const [language, updateLanguage] = useContext(siteLanguage);
+  const { language, updateLanguage } = useContext(siteSettingsContext);
+
   let avaliableLanguages = [];
   for (let key in site) avaliableLanguages.push(key);
 
@@ -23,8 +24,9 @@ export function RenderSiteLanguages() {
   );
 }
 
-export function Header({ onUpdatePage, page }) {
-  const [language] = useContext(siteLanguage);
+export function Header({ page }) {
+  const [pageNumber, setPageNumber] = page;
+  const { language } = useContext(siteSettingsContext);
   const navPageLists = site[language].header.navmenu;
 
   return (
@@ -39,8 +41,8 @@ export function Header({ onUpdatePage, page }) {
         <RenderSiteLanguages />
         <ul>
           {navPageLists.map((item, index) => (
-            <li key={index} className={page == index ? "active" : ""}>
-              <a onClick={() => onUpdatePage(index)}>
+            <li key={index} className={pageNumber == index ? "active" : ""}>
+              <a onClick={() => setPageNumber(index)}>
                 {index == 3 ? <button>{item}</button> : item}
               </a>
             </li>
