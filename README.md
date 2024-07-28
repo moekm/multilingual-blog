@@ -20,7 +20,7 @@ A minimalist front-end single-page blog built entirely with **React**, featuring
 $> git clone https://github.com/moekm/multilingual-blog.git
 ```
 
-**2. cd into the local repo folder**
+**2. cd into the downloaded repo folder**
 ```bash
 cd ./multilingual-blog
 ```
