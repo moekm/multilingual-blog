@@ -20,11 +20,9 @@ function handlePostActions(state, action) {
       };
       break;
     case "new":
-      //   console.log(action.payload);
-      //   console.log([...state.posts]);
       return {
-        // ...state,
-        posts: [action.payload, ...state.posts],
+        ...state,
+        posts: [...state.posts, action.payload],
         pindex: null,
         isOpen: false,
         isEditing: false,

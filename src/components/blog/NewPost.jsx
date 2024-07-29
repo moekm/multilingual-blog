@@ -65,7 +65,7 @@ export default function NewPost({
 }
 
 function createNewPost(postObject, lastpostID) {
-  let template = { ...postTemplate };
+  let template = JSON.parse(JSON.stringify(postTemplate)); // deep copy
 
   // calculate the current date
   const date = new Date();
@@ -75,7 +75,7 @@ function createNewPost(postObject, lastpostID) {
     date.getFullYear(),
   ]; // DD/MM/YYYY
 
-  template.id = Math.random();
+  template.id = lastpostID;
   template.date = formattedDate;
   template.author = [postObject.author];
   template.postLanguages.ENGLISH.title = postObject.title;
